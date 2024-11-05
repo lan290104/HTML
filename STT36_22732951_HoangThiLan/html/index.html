@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANH SACH LUONG NHAN VIEN</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        .container h1 {
+            text-align: center;
+            color: rgb(0, 119, 255);
+            background-color: cornflowerblue;
+        }
+        
+        li {
+            width: 130px;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        [class*="col-"] {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        
+        .btn {
+            background-color: rgb(0, 119, 255);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .footer p {
+            text-align: center;
+            color: blue;
+            background-color: cornflowerblue;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            var i = 2;
+            $("#btnDK").click(function() {
+                $("#myModal").modal('show')
+            });
+            $(".close").click(function() {
+                $("#myModal").modal('hide')
+            });
+            // cau 2
+            function KiemTraMa() {
+                var pattern = /^[0-9]{9}$/;
+                if (!pattern.test($("#txtMa").val())) {
+                    $("#tbMa").html("Sai định dạng");
+                    return false;
+                } else {
+                    $("#tbMa").html("Nhập đúng");
+                    return true
+                }
+            }
+            $("#txtMa").blur(KiemTraMa);
+            // cau 3
+            function KiemtraHT() {
+                var pattern = /^[A-Z][a-z]+(\s[A-Z][a-z]+)+$/;
+                if ($("#txtHT").val() === "") {
+                    $("#tbTen").html("Nhập tên không hợp lệ");
+                    return false;
+                }
+                if (!pattern.test($("#txtHT").val())) {
+                    $("#tbTen").html("* Chữ cái đầu phải viết hoa");
+                    return false;
+                }
+                $("#tbTen").html("Nhập đúng");
+                return true;
+            }
+            $("#txtHT").blur(KiemtraHT);
+
+            // cau 4
+            $('#txtNgay').on('blur', function() {
+                const ngayThamGia = new Date($(this).val());
+                if (!$(this).val()) {
+                    $('#tbNgay').text('*Bắt buộc nhập !!');
+                    return;
+                }
+
+                const ngayHienTai = new Date();
+                ngayHienTai.setFullYear(ngayHienTai.getFullYear() - 18);
+                if (ngayThamGia > ngayHienTai) {
+                    $('#tbNgay').text('Ngày tham gia phải trước ngày hiện tại 18 năm');
+                } else {
+                    $('#tbNgay').text('Nhập Đúng');
+                }
+            });
+            // cau 5
+
+            // cau 6
+            $("#luong").change(function() {
+                $("#luong option:selected").each(function() {
+                    alert($(this).val());
+                    $("#heso").val($(this).val());
+                });
+            });
+            // cau 7
+            $("#btnSave").click(function() {
+                var ma = $("#txtMa").val();
+                var ht = $("#txtHT").val();
+                var ngay = $("#txtNgay").val();
+                var chucvu = $(".chucvu").val();
+                var heso = $("#heso").val();
+                var them =
+                    "<tr><td>" + (i++) + "</td><td>" + ma + "</td><td>" + ht + "</td><td>" + ngay + "</td><td>" + chucvu + "</td><td>" + heso + "</td><td>";
+                $("#tbDanhSach").append(them);
+                $("#myModal").modal("hide");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container border">
+        <div class="row">
+            <div class="col-12">
+                <h1>DANH SÁCH LƯƠNG NHÂN VIÊN</h1>
+            </div>
+        </div>
+        <div class="row">
+            <nav class="navbar">
+                <ul class="nav nav-navbar navbar-expand">
+                    <li class="nav-item"><a href="#">Trang Chủ</a></li>
+                    <li class="nav-item"><a href="#">Thông tin</a></li>
+                    <li class="nav-item"><a href="#" id="btnDK">Cập nhật lương</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+
+            <table class="table-bordered table-light table-hover table-primary table table-striped fw-bold" id="tbDanhSach">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã nhân sự</th>
+                    <th>Họ Tên</th>
+                    <th>Ngày hợp đồng</th>
+                    <th>Chức vụ</th>
+                    <th>Bậc lương</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>912345678</td>
+                    <td>Hoàng Minh Vương</td>
+                    <td>12/05/2000</td>
+                    <td>Nhân Viên</td>
+                    <td>1.86</td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>THÔNG TIN NHÂN VIÊN</h5>
+                            <button type="button" class="btn-close close" data-dismiss="modal" aria-label="close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" class="form-control">
+                                <div class="row form-group p-1">
+                                    <div class="col-12 col-sm-12">
+                                        <label for="">Mã nhân sự:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <input type="text" class="form-control" id="txtMa" placeholder="Mã nhân sự">
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <span id="tbMa" style="color: red;">(*)</span>
+                                    </div>
+                                </div>
+                                <div class="row form-group p-1">
+                                    <div class="col-12 col-sm-12">
+                                        <label for="">Tên nhân viên:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <input type="text" class="form-control" id="txtHT" placeholder="Họ tên">
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <span id="tbTen" style="color: red;">(*)</span>
+                                    </div>
+                                </div>
+                                <div class="row form-group p-1">
+                                    <div class="col-12 col-sm-12">
+                                        <label for="">Ngày vào công ty:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <input type="date" name="txtNgay" id="txtNgay" class="form-control">
+                                    </div>
+                                    <div class="col-12 col-sm-12 p-2">
+                                        <span id="tbNgay" style="color: red;">(*)</span>
+                                    </div>
+                                </div>
+                                <div class="row form-group p-1">
+                                    <div class="col-12 col-sm-12">
+                                        <label for="">Chức vụ:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <input type="radio" name="chucvu" class="chucvu">Cán bộ quản lý
+                                        <input type="radio" name="chucvu" class="chucvu">nhân viên
+                                    </div>
+                                    <div class="col-12 col-sm-12 p-2">
+                                        <span id="tbChuc" style="color: red;">(*)</span>
+                                    </div>
+                                </div>
+                                <div class="row form-group p-1">
+                                    <div class="col-12 col-sm-12">
+                                        <label for="">Bậc lương:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <select name="luong" id="luong" class="form-control">
+                                            <option value="1.92">Bậc 1</option>
+                                            <option value="1.86">Bậc 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group p-1">
+                                    <div class="col-12 col-sm-12">
+                                        <label for="">Hệ số:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <input type="text" name="heso" id="heso" class="form-control" disabled>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <div class="row p-1">
+                                    <div class="col-sm-2">
+                                        <input type="button" value="Thêm" id="btnSave" class="btn btn-block" style="width: 100%;">
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div class=" col-10 col-sm-10"></div>
+                            <div class="col-2 col-sm-2">
+                                <button class="btn close"> Close </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <div class="footer">
+                    <p>22732951_Hoang Thi Lan</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

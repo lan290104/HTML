@@ -1,0 +1,116 @@
+{
+    "editor.tabCompletion": "on",
+    "explorer.sortOrder": "filesFirst",
+    "explorerExclude.backup": {},
+    "workbench.colorTheme": "EM Dark",
+    "workbench.tree.indent": 20,
+    "files.associations": {
+        "em-boards": "yaml",
+        "*.emtour": "markdown",
+        "*.ems": "yaml",
+        "*.ota": "hex"
+    },
+    "yaml.schemas": {
+        "c:/Users/84933/.vscode/extensions/the-em-foundation.em-builder-24.0.10/etc/schemas/ems.schema.json": [
+            "*.ems"
+        ]
+    },
+    "vsicons.associations.folders": [
+        {
+            "icon": "embundle",
+            "extensions": [
+                "em.build-24.0.10.202312251725",
+                "em.core-24.0.10.202312251725",
+                "em.docs-24.0.10.202312251725",
+                "ti.cc23xx-24.0.10.202312251725"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "embundles",
+            "extensions": [
+                ".em-cargo"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "empkg",
+            "extensions": [
+                "em.build.clang.arm",
+                "em.build.gcc",
+                "em.build.gcc2",
+                "em.build.iar.arm",
+                "em.build.misc",
+                "em.build.segger",
+                "em.build.segger2",
+                "em.build.ticc.arm",
+                "em.build.ticc.msp430",
+                "em.hal",
+                "em.lang",
+                "em.mcu",
+                "em.utils",
+                "em.examples.basic",
+                "com.ti",
+                "ti.build.cc23xx",
+                "ti.distro.cc23xx",
+                "ti.mcu.cc23xx"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "app",
+            "extensions": [
+                ".gen"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "binary",
+            "extensions": [
+                ".out"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "docs",
+            "extensions": [
+                ".tours"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "services",
+            "extensions": [
+                ".em-boot"
+            ],
+            "format": "svg"
+        }
+    ],
+    "vsicons.associations.files": [
+        {
+            "icon": "emunit",
+            "extensions": [
+                ".em"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "emschema",
+            "extensions": [
+                ".schema",
+                ".ems"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "emboards",
+            "extensions": [
+                "em-boards",
+                "em-boards-local"
+            ],
+            "filename": true,
+            "format": "svg"
+        }
+    ],
+    "vsicons.customIconFolderPath": "c:\\Users\\84933\\.vscode\\extensions\\the-em-foundation.em-builder-24.0.10\\etc"
+}
